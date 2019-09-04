@@ -1,0 +1,76 @@
+
+
+# Database spartoo
+# ------------------------------------------------------------
+
+CREATE DATABASE `spartoo` DEFAULT CHARACTER SET = `utf8`;
+USE `spartoo`;
+
+
+
+# Table chaussures
+# ------------------------------------------------------------
+
+CREATE TABLE `chaussures` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `Modele` varchar(255) NOT NULL DEFAULT '',
+  `Marque` varchar(255) NOT NULL DEFAULT '',
+  `Couleur` varchar(255) NOT NULL DEFAULT '',
+  `Prix` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Table clients
+# ------------------------------------------------------------
+
+CREATE TABLE `clients` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL DEFAULT '',
+  `prenom` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Table commandes
+# ------------------------------------------------------------
+
+CREATE TABLE `commandes` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `clients` varchar(255) NOT NULL DEFAULT '',
+  `adresse_livraison` varchar(255) NOT NULL DEFAULT '',
+  `produits_commandés` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Table pointure
+# ------------------------------------------------------------
+
+CREATE TABLE `pointure` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `femme` varchar(255) NOT NULL DEFAULT '',
+  `homme` varchar(255) NOT NULL DEFAULT '',
+  `enfant` varchar(255) NOT NULL DEFAULT '',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+# Creation de clés étrangère
+--------------------------------------------------------------
+
+ alter table `clients`
+ add constraint `fk_client` foreign key 
+(`id_client`) references commandes (`id`);
+
+
+
+
+
+
+
+
